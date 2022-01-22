@@ -6,24 +6,24 @@ import Brightness7Icon from '@mui/icons-material/Brightness7';
 function App() {
     const [theme, setTheme] = useState(false);
 
-    useEffect(() => {
-        const theme = localStorage.getItem('theme');
+    const getThemeFromLS = localStorage.getItem('theme');
 
-        if (theme === null || theme === 'light') {
+    useEffect(() => {
+        if (getThemeFromLS === null || getThemeFromLS === 'light') {
             setTheme(false);
         } else {
             setTheme(true);
         }
-    }, []);
+    }, [getThemeFromLS]);
 
-    const onClickDarkTheme = () => {
-        setTheme((prevTheme) => !prevTheme);
-        localStorage.setItem('theme', 'dark');
-    };
-
-    const onClickLightTheme = () => {
-        setTheme((prevTheme) => !prevTheme);
-        localStorage.setItem('theme', 'light');
+    const onClickHandler = () => {
+        if (getThemeFromLS === null || getThemeFromLS === 'light') {
+            setTheme((prevTheme) => !prevTheme);
+            localStorage.setItem('theme', 'dark');
+        } else {
+            setTheme((prevTheme) => !prevTheme);
+            localStorage.setItem('theme', 'light');
+        }
     };
 
     return (
@@ -34,11 +34,7 @@ function App() {
         >
             <h1>Actual Theme is: {theme === false ? 'Light' : 'Dark'}</h1>
             {theme && (
-                <button
-                    type='button'
-                    className='btn'
-                    onClick={onClickLightTheme}
-                >
+                <button type='button' className='btn' onClick={onClickHandler}>
                     <Brightness4Icon
                         sx={{ fontSize: 100 }}
                         style={{
@@ -48,11 +44,7 @@ function App() {
                 </button>
             )}
             {!theme && (
-                <button
-                    type='button'
-                    className='btn'
-                    onClick={onClickDarkTheme}
-                >
+                <button type='button' className='btn' onClick={onClickHandler}>
                     <Brightness7Icon
                         sx={{ fontSize: 100 }}
                         style={{

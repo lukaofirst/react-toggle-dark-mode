@@ -19,7 +19,7 @@ code {
 }
 
 .theme-light {
-    background-color: #f0eff5;
+    background-color: #d6d5db;
     color: #14004d;
     border-color: #14004d;
     outline-color: #14004d;
@@ -27,9 +27,9 @@ code {
 
 .theme-dark {
     background-color: #14004d;
-    color: #f0eff5;
-    border-color: #f0eff5;
-    outline-color: #f0eff5;
+    color: #d6d5db;
+    border-color: #d6d5db;
+    outline-color: #d6d5db;
 }
 
 .container {
